@@ -1,0 +1,25 @@
+{
+  "name": "alcalguia_bquilla",
+  "version": "1.0.0",
+  "description": "Esta es una plataforma digital que facilita y optimiza la orientación de los ciudadanos durante la realización de trámites en la Alcaldía de Barranquilla, reduciendo la desinformación, el tiempo perdido y la mala experiencia de atención.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sayderochoa-gif/Alcalguia_Bquilla.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sayderochoa-gif/Alcalguia_Bquilla/issues"
+  },
+  "homepage": "https://github.com/sayderochoa-gif/Alcalguia_Bquilla#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}

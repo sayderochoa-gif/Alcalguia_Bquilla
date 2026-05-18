@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcaldía de Barranquilla - Guía de Trámites</title>
+    <!-- Cargamos los estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Encabezado Principal -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand">
+                <h1>Alcaldía de Barranquilla</h1>
+                <p>Guía Inteligente de Trámites Ciudadanos</p>
+            </div>
+            <!-- Menú de Navegación Interactivo -->
+            <nav class="nav-tabs">
+                <button onclick="cambiarPestana('inicio')" id="btn-inicio" class="tab-btn active">🔍 1. Buscar Trámite</button>
+                <button onclick="cambiarPestana('chatbot')" id="btn-chatbot" class="tab-btn">💬 2. Asistente IA</button>
+                <button onclick="cambiarPestana('mapa')" id="btn-mapa" class="tab-btn">📍 3. Mapa Central</button>
+                <button onclick="cambiarPestana('seguimiento')" id="btn-seguimiento" class="tab-btn">✅ 4. Mi Estado</button>
+                <button onclick="cambiarPestana('reportes')" id="btn-reportes" class="tab-btn">⚠️ 5. Alertas</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenedor de Vistas Dinámicas -->
+    <main class="content-card">
+        
+        <!-- REQUISITO 1: BUSCADOR DE TRÁMITES -->
+        <section id="sec-inicio" class="tab-content">
+            <h2>¿Qué trámite necesitas hacer hoy?</h2>
+            <p class="subtitle">Evita traslados innecesarios buscando la información oficial de forma inmediata.</p>
+            <div class="search-box">
+                <input type="text" id="input-busqueda" placeholder="Ej: subsidio de transporte universitario">
+                <button onclick="buscarTramite()" class="btn-primary">Buscar</button>
+            </div>
+            <div id="resultado-busqueda" class="hidden"></div>
+        </section>
+
+        <!-- REQUISITO 2: ORIENTACIÓN INTELIGENTE (CHATBOT) -->
+        <section id="sec-chatbot" class="tab-content hidden">
+            <h2>Asistente Guiado Ciudadano</h2>
+            <p class="subtitle">Responde las preguntas del asistente paso a paso para saber exactamente qué oficina visitar.</p>
+            <div id="chat-box" class="chat-container">
+                <div class="msg logo-msg">¡Hola! Soy tu orientador virtual de la Alcaldía. ¿Qué trámite deseas realizar hoy?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="input-chat" placeholder="Escribe tu respuesta aquí (Ej: Sí, No, Subsidio)...">
+                <button onclick="enviarMensajeChat()" class="btn-primary">Enviar</button>
+            </div>
+        </section>
+
+        <!-- REQUISITO 3: MAPA INTERACTIVO -->
+        <section id="sec-mapa" class="tab-content hidden">
+            <h2>Mapa de Ubicaciones y Rutas Cercanas</h2>
+            <p class="subtitle">Ubica físicamente los puntos de atención y las líneas de transporte habilitadas.</p>
+            <div class="map-simulation">
+                <div class="map-pin-card">
+                    <span class="pin-icon">📍</span>
+                    <h3>Alcaldía de Barranquilla</h3>
+                    <p>Calle 34 No. 43-31 (Paseo Bolívar)</p>
+                    <span class="badge-bus">🚌 Ruta: Transmetro Estación Retorno</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- REQUISITO 4: SEGUIMIENTO DE TRÁMITES -->
+        <section id="sec-seguimiento" class="tab-content hidden">
+            <h2>Seguimiento Remoto de Expediente</h2>
+            <p class="subtitle">Ingresa tu cédula para validar el estado de tu proceso sin salir de casa.</p>
+            <div class="search-box">
+                <input type="text" id="input-cedula" placeholder="Ingresa tu identificación (Ej: 123456 o 789012)">
+                <button onclick="consultarEstado()" class="btn-primary">Consultar</button>
+            </div>
+            <div id="resultado-seguimiento" class="hidden status-card"></div>
+        </section>
+
+        <!-- REQUISITO 5: SISTEMA DE REPORTES CIUDADANOS -->
+        <section id="sec-reportes" class="tab-content hidden">
+            <h2>Canal de Reportes Ciudadanos Anónimos</h2>
+            <p class="subtitle">Ayúdanos a identificar demoras o mala atención en los puntos físicos.</p>
+            <div id="alerta-reporte" class="alert-success hidden">¡Reporte enviado! Tu voz nos ayuda a corregir las malas prácticas.</div>
+            
+            <form onsubmit="enviarReporte(event)" class="form-report">
+                <div class="form-group">
+                    <label>¿En qué oficina o dependencia ocurrió?</label>
+                    <input type="text" id="rep-oficina" required placeholder="Ej: Ventanilla de Atención Social">
+                </div>
+                <div class="form-group">
+                    <label>Motivo del reporte</label>
+                    <select id="rep-motivo" required>
+                        <option value="">Selecciona una opción...</option>
+                        <option value="Mala atención">Información errónea por parte del funcionario</option>
+                        <option value="Largas filas">Demoras extremas en filas (Más de 2 horas)</option>
+                        <option value="Lugar incorrecto">Me direccionaron a una sede equivocada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Descripción detallada</label>
+                    <textarea id="rep-descripcion" rows="3" placeholder="Describe brevemente lo sucedido..."></textarea>
+                </div>
+                <button type="submit" class="btn-danger">⚠️ Enviar Alerta Institucional</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Cargamos la lógica de control -->
+    <script src="app.js"></script>
+</body>
+</html>
